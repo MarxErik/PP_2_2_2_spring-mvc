@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 @Service
 public class CarServiceImpl implements CarService {
     private final CarDao carDao;
+
     @Autowired
     public CarServiceImpl(CarDao carDao) {
         this.carDao = carDao;
@@ -19,7 +20,10 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> getCarList(int count) {
-        return carDao.getCarList().stream().filter(Objects::nonNull).limit(count).collect(Collectors.toList());
+        return carDao.getCarList().stream()
+                .filter(Objects::nonNull)
+                .limit(count)
+                .collect(Collectors.toList());
     }
 }
 
